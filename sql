@@ -33,16 +33,31 @@ From payment
 WHERE payment_date > '2007-05-01'
 ORDER BY payment_date DESC;
 
+1 - FROM payment
+2 - WHERE payment_date > '2007-05-01'
+3 - SELECT payment_date
+4 - ORDER BY payment_date
+5 - DESC
+
 
 SELECT payment_id, payment_date
 From payment
 WHERE amount < 3;
 
+1 - FROM payment
+2 - WHERE amount < 3
+3 - SELECT payment_id, payment_date
 
 SELECT customer_id, email, active
 From customer
 WHERE store_id = 1 AND active = 0
 ORDER BY last_update;
+
+1 - FROM customer
+2 - WHERE store_id = 1 AND active = 0
+3 - SELECT customer_id, email, active
+4 - ORDER BY last_update
+
 
 -- THESE TWO ARE A BIT TRICKIER
 SELECT c.name, COUNT(f.film_id) as total
@@ -52,11 +67,23 @@ JOIN category AS c ON fc.category_id=c.category_id
 GROUP BY c.category_id
 ORDER BY total DESC ;
 
+1 - film AS f
+2 - f JOIN film_category AS fc ON film_id
+3 - f joined with fc JOIN category AS c ON category_id
+4 - GROUP BY c.category_id
+5 - SELECT c.name, COUNT(f.film_id) AAS total
+6 - ORDER BY total
+7 - DESC
 
 SELECT *
 FROM payment
 WHERE amount > (SELECT AVG(amount) FROM payment);
 
+1 - FROM payment
+2 - SELECT AVG(amount)
+3 - FROM payment
+4 - WHERE amount > AVG(amount)
+5 - SELECT * 
 
 
 
